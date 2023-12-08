@@ -39,21 +39,21 @@ foreach ($Line in $InputData) {
     }
     $SortedCardCounts = @($CardCounts.GetEnumerator() | Sort-Object Value -Descending)
     if ($SortedCardCounts.Count -eq 1) {
-        $HandType = 6
+        $HandType = 6 # five of a kind
     } elseif ($SortedCardCounts.Count -eq 2 -and ($SortedCardCounts[0].Value + $JokerCount) -eq 4) {
-        $HandType = 5
+        $HandType = 5 # four of a kind
     } elseif ($SortedCardCounts.Count -eq 2 -and ($SortedCardCounts[0].Value + $JokerCount) -eq 3) {
-        $HandType = 4
+        $HandType = 4 # full house
     } elseif ($SortedCardCounts.Count -eq 3 -and ($SortedCardCounts[0].Value + $JokerCount) -eq 3) {
-        $HandType = 3
+        $HandType = 3 # three of a kind
     } elseif ($SortedCardCounts.Count -eq 3 -and ($SortedCardCounts[0].Value + $JokerCount) -eq 2) {
-        $HandType = 2
+        $HandType = 2 # two pair
     } elseif ($SortedCardCounts.Count -eq 4) {
-        $HandType = 1
+        $HandType = 1 # one pair
     } elseif ($SortedCardCounts.Count -eq 5) {
-        $HandType = 0
+        $HandType = 0 # high card
     } elseif ($JokerCount -eq 5) {
-        $HandType = 6
+        $HandType = 6 # five of a kind (special case for jokers only)
     } else {
         throw "invalid hand: $Hand"
     }
