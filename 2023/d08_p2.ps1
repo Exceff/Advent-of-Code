@@ -29,7 +29,7 @@ function Get-LCM {
 
     return $lcm
 }
-# </ChatCPT>
+# </ChatGPT>
 
 $InputData = Get-Content -Path '.\d08_input'
 
